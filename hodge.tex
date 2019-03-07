@@ -1,0 +1,384 @@
+%        File: hodge.tex
+%     Created: mar mar 05 08:00  2019 C
+% Last Change: mar mar 05 08:00  2019 C
+%
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows, babel}
+
+\author{\textit{Guillermo Gallego Sánchez}}
+\title{\textsc{Teoría de Hodge}}
+\date{}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lema}{Lema}
+\newtheorem{corol}[thm]{Corolario}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definición}
+\theoremstyle{definition} \newtheorem{ejemplo}[thm]{Ejemplo}
+\theoremstyle{definition} \newtheorem{ejercicio}[thm]{Ejercicio}
+\theoremstyle{remark} \newtheorem*{obs}{Observación}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\esc{\langle}{\rangle}
+\newcommand{\dvol}{\mathrm{dvol}}
+\newcommand{\dol}{\bar{\partial}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\cte}{\mathrm{cte.}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\eps}{\varepsilon}
+
+
+\begin{document}
+\maketitle
+\section{La idea formal}
+Sea $M$ una variedad compleja conexa y compacta de dimensión $n$. Recordemos que las $k$-formas diferenciables complejas admitían una descomposición
+\begin{equation*}
+  \Omega^k(M)=\bigoplus_{p+q=k}\Omega^{p,q}(M)
+\end{equation*}
+y teníamos el siguiente bicomplejo de cocadenas
+\begin{center}
+  \begin{tikzcd}
+    &\vdots &\vdots & \\
+    \cdots \arrow{r}{\bar{\partial}}  & \Omega^{p+1,q}(M) \arrow{r}{\bar{\partial}}\arrow{u}{\partial}& \Omega^{p+1,q+1}(M)\arrow{r}{\bar{\partial}}\arrow{u}{\partial} & \cdots    \\ 
+    \cdots \arrow{r}{\bar{\partial}}  & \Omega^{p,q}(M) \arrow{r}{\bar{\partial}}\arrow{u}{\partial} & \Omega^{p,q+1}(M)\arrow{u}{\partial} \arrow{r}{\bar{\partial}}& \cdots   \\ 
+   &\vdots \arrow{u}{\partial}&\vdots \arrow{u}{\partial}&
+  \end{tikzcd}
+\end{center}
+de forma que definíamos la \emph{cohomología de Dolbeaut}
+\begin{equation*}
+  H^{p,q}(M)=\frac{\left\{  \omega \in \Omega^{p,q}(M) : \bar{\partial}\omega=0\right\}}{\bar{\partial}(\Omega^{p,q-1}(M))}.
+\end{equation*}
+El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos representantes «especiales» de estas clases de cohomología.
+  
+ Aunque las conclusiones de la teoría de Hodge no son de carácter métrico, será crucial escoger de modo auxiliar una métrica hermítica $ds^2$ en $M$. En coordenadas esta métrica puede expresarse como
+ \begin{equation*}
+   ds^2=\sum_{i,j} h_{ij}(z) dz_i \otimes d\bar{z}_i,
+ \end{equation*}
+ y por Gram-Schmidt podemos «diagonalizar» esta métrica por congruencia. Es decir, podemos encontrar una referencia \emph{unitaria}, esto es, un conjunto de formas diferenciales de tipo $(1,0)$ $\left\{ \varphi_1,\dots,\varphi_n \right\}$ tal que 
+ \begin{equation*}
+   ds^2=\sum_i \varphi_i \otimes \bar{\varphi}_i.
+ \end{equation*}
+ Con esta referencia unitaria, podemos inducir una métrica en los fibrados $\Lambda^{p,q}(M)$: si 
+ \begin{align*}
+   \alpha_x&= \sum_{|I|=p, |J|=q} \alpha_{IJ}(x) \varphi_{i_1} \wedge \cdots \wedge \varphi_{i_p} \wedge \bar{\varphi}_{j_1} \wedge \cdots \wedge \bar{\varphi}_{j_q}|_x, \\
+   \beta_x&= \sum_{|I|=p, |J|=q} \beta_{IJ}(x) \varphi_{i_1} \wedge \cdots \wedge \varphi_{i_p} \wedge \bar{\varphi}_{j_1} \wedge \cdots \wedge \bar{\varphi}_{j_q}|_x ,
+ \end{align*}
+  definimos
+  \begin{equation*}
+    \esc{\alpha_x,\beta_x}=\sum_{|I|=p, |J|=q} \overline{\alpha_{IJ}(x)} \beta_{IJ}(x)   .
+  \end{equation*}
+  La métrica hermítica $ds^2$ induce también una forma de volumen en $M$
+  \begin{equation*}
+    \dvol_M=K_n \varphi_1 \wedge \cdots \wedge \varphi_n \wedge \bar{\varphi}_1 \wedge \cdots \wedge \bar{\varphi}_n,
+  \end{equation*}
+  con $K_n$ cierta constante que no nos interesa.
+  Definimos ahora el operador \emph{estrella de Hodge} $*:\Omega^{p,q}(M) \rightarrow \Omega^{n-p,n-q}(M)$, de forma que
+  \begin{equation*}
+    \alpha \wedge *\beta = \esc{\alpha,\beta} \dvol_M.
+  \end{equation*}
+  Usando la forma de volumen, a partir de la métrica definida en los fibrados $\esc{\cdot,\cdot}$, podemos definir una métrica «$L^2$» en los espacios de secciones $\Omega^{p,q}(M)$:
+  \begin{equation*}
+    \esc{\alpha,\beta}_{L^2}=\int_M \esc{\alpha,\beta} \dvol_M = \int_M \alpha \wedge *\beta.
+  \end{equation*}
+  Esta métrica dota a $(\Omega^{p,q}(M), \esc{\cdot,\cdot}_{L^2})$ de la estructura de espacio prehilbertiano. 
+
+  Consideremos ahora el operador de Dolbeaut $\bar{\partial}:\Omega^{p,q}(M) \rightarrow \Omega^{p,q+1}(M)$. Este operador tiene un operador adjunto «formal» con respecto a la métrica $L^2$, $\dol^*:\Omega^{p,q+1}(M) \rightarrow \Omega^{p,q}(M)$, definido por la relación:
+  \begin{equation*}
+    \esc{\alpha,\dol \beta}_{L^2}=\esc{\dol^* \alpha,\beta}_{L^2},
+  \end{equation*}
+  para cualesquiera $\alpha \in \Omega^{p,q+1}(M)$ y $\beta \in \Omega^{p,q}(M)$.
+
+  La idea clave ahora es la siguiente: \textit{vamos a tratar de determinar las clases de cohomología por sus elementos de norma mínima}. Es decir, nos hacemos la siguiente pregunta: dada una clase de cohomología $a\in H^{p,q}(M)$, ¿existe un representante $\alpha$ de $a$ con norma mínima?
+
+  \begin{lema}
+    Una forma $\dol$-cerrada $\alpha \in \Omega^{p,q}(M)$ es de norma mínima en $\alpha + \dol \Omega^{p,q-1}(M)$ si y sólo si $\dol^*\alpha = 0$.
+  \end{lema}
+  \begin{proof}
+    En primer lugar, supongamos que una $\dol^*\alpha = 0$. Entonces, para toda $\beta \in \Omega^{p,q-1}(M)$ tenemos
+    \begin{equation*}
+      \norm{\alpha+\dol \beta}_{L^2}^2=\esc{\alpha+\dol\beta,\alpha+\dol\beta}_{L^2}=\norm{\alpha}_{L^2}^2 + \norm{\dol \beta}_{L^2}^2 + 2 \mathrm{Re} \esc{\alpha, \dol\beta}_{L^2}
+    \end{equation*}
+    Ahora, 
+    \begin{equation*}
+      \esc{\alpha,\dol \beta}_{L^2}=\esc{\dol^* \alpha, \beta}_{L^2}=0,
+    \end{equation*}
+    ya que $\dol^*\alpha = 0$.
+    Por tanto, 
+    \begin{equation*}
+      \norm{\alpha+\dol \beta}_{L^2}^2=\norm{\alpha}_{L^2}^2 + \norm{\dol \beta}_{L^2}^2 \geq \norm{\alpha}_{L^2}^2.
+    \end{equation*}
+
+    Por otra parte, supongamos que $\alpha$ es de norma mínima. Entonces, para cualquier $\beta \in \Omega^{p,q-1}(M)$ ha de cumplirse que
+    \begin{equation*}
+      \left. \frac{\partial}{\partial t}\right|_{t=0} \norm{\alpha + t \dol \beta}^2_{L^2}=0.
+    \end{equation*}
+  Ahora,
+  \begin{align*}
+    \left. \frac{\partial}{\partial t}\right|_{t=0} \norm{\alpha + t \dol \beta}^2_{L^2}&=\left. \frac{\partial}{\partial t}\right|_{t=0} \left( \norm{\alpha}_{L^2}^2 + t^2 \norm{\beta}_{L^2}^2 + 2t \mathrm{Re}\esc{\alpha,\dol \beta}_{L^2} \right)\\ &= \left. 2t \norm{\dol \beta}^2_{L^2} + 2 \mathrm{Re}\esc{\alpha,\dol \beta}_{L^2} \right|_{t=0} = 2 \mathrm{Re}\esc{\alpha,\dol \beta}_{L^2},
+  \end{align*}
+  mientras que
+  \begin{align*}
+    \left. \frac{\partial}{\partial t}\right|_{t=0} \norm{\alpha + t \dol (i\beta)}^2_{L^2}&=\left. \frac{\partial}{\partial t}\right|_{t=0} \left( \norm{\alpha}_{L^2}^2 + t^2 \norm{\beta}_{L^2}^2 + 2t \mathrm{Im}\esc{\alpha,\dol \beta}_{L^2} \right)\\ &= \left. 2t \norm{\dol \beta}^2_{L^2} + 2 \mathrm{Im}\esc{\alpha,\dol \beta}_{L^2} \right|_{t=0} = 2 \mathrm{Im}\esc{\alpha,\dol \beta}_{L^2}.
+  \end{align*}
+  Tenemos entonces que $$\esc{\dol^*\alpha, \dol \beta}_{L^2}=\esc{\alpha, \dol \beta}_{L^2}=0.$$
+  Como esto es cierto para cualquier $\beta \in \Omega^{p,q-1}(M)$, concluimos que $\dol^*\alpha=0$, como queríamos probar.
+  \end{proof}
+
+  De este resultado, si podemos identificar cada clase de cohomología con su elemento de norma mínima, podemos concluir, al menos formalmente, la siguiente correspondencia
+  \begin{center}
+    \begin{tikzcd}
+      H^{p,q}(M) \arrow{r} &\left\{ \alpha \in \Omega^{p,q}(M) : \dol \alpha=0, \dol^*\alpha=0 \right\} .\arrow{l}
+    \end{tikzcd}
+  \end{center}
+  Consideremos ahora el operador \emph{laplaciano}
+  \begin{equation*}
+    \Delta = \dol \dol^* + \dol^* \dol,
+  \end{equation*}
+  y notemos que $\Delta \alpha = 0$ si y sólo si $\dol \alpha = 0$ y $\dol^*\alpha =0$. En efecto, en un sentido es claro. Veamos entonces qué pasa si $\Delta \alpha = 0$. En tal caso, lo que sucede es que
+  \begin{equation*}
+    0 = \esc{\Delta \alpha, \alpha}_{L^2} = \esc{\dol \dol^* \alpha, \alpha}_{L^2} + \esc{\dol^* \dol \alpha, \alpha}_{L^2} = \esc{\dol^* \alpha, \dol^* \alpha}_{L^2} + \esc{\dol \alpha, \dol \alpha}_{L^2} = \norm{\dol^* \alpha}_{L^2} + \norm{\dol \alpha}_{L^2},
+  \end{equation*}
+  con lo cual, $\dol \alpha = \dol^*\alpha=0$. Definimos el conjunto de \emph{formas armónicas} de tipo $(p,q)$ como 
+  \begin{equation*}
+    \HH^{p,q}(M)=\left\{ \alpha \in \Omega^{p,q}(M) : \Delta \alpha=0 \right\}.   
+  \end{equation*}
+ Precisamente lo que queremos demostrar es lo siguiente:
+ \begin{thm}[Hodge]
+   Existe un isomorfismo
+   \begin{center}
+     \begin{tikzcd}
+       H^{p,q}(M) \arrow{r}{\cong} & \HH^{p,q}(M).
+     \end{tikzcd}
+   \end{center}
+ \end{thm}
+   
+ Nótese que aún no hemos probado este teorema, sino que hemos dado una idea formal, sin embargo, nuestro argumento tiene una serie de fallos que habrá que remediar:
+ \begin{enumerate}
+   \item Los espacios $(\Omega^{p,q}(M),\esc{\cdot,\cdot}_{L^2})$ no son completos y el operador $\dol$ no es acotado, de forma que tenemos una dificultad a la hora de definir el operador adjunto $\dol^*$.
+   \item El espacio de las formas de tipo $(p,q)$ cerradas es de dimensión infinita, de forma que, a menos que las clases de cohomología, vistas como subespacios vectoriales sean cerradas, no tienen por qué estar determinadas por el representante de norma mínima y demostrar que esas clases son, en efecto, cerradas es algo altamente no trivial.
+ \end{enumerate}
+
+ Antes de continuar, veamos por qué, en efecto, podemos entender $\Delta$ como un genuino \emph{laplaciano}. Si $\alpha \in \Omega^{p,q}(M)$ en coordenadas locales se escribe en la forma
+ \begin{equation*}
+   \alpha = \sum_{|I|=p, |J|=q} \alpha_{IJ} dz_I \wedge d\bar{z}_J,
+ \end{equation*}
+ entonces es fácil comprobar que
+ \begin{equation*}
+   \Delta \alpha = -2 \sum_{|I|=p, |J|=q,i} \frac{\partial^2 \alpha_{IJ}}{\partial z_i \partial \bar{z}_i} dz_I \wedge d\bar{z}_J= -\frac{1}{2}\sum_{|I|=p, |J|=q,i}\left( \frac{\partial^2}{\partial x_i^2} + \frac{\partial^2}{\partial y_i^2} \right) \alpha_{IJ} dz_I \wedge d\bar{z}_J,
+ \end{equation*}
+ con $z_j=x_j+iy_j$.
+ Es decir, localmente $\Delta$ actúa como el laplaciano sobre las funciones $\alpha_{IJ}$. Así, podemos pensar que el problema de buscar las formas armónicas en las clases de cohomología de $H^{p,q}(M)$ es similar al de resolver la ecuación de Laplace. Esto, junto con las observaciones anteriores, deja bastante claro que si queremos atacar la demostración del teorema de Hodge va a ser necesario recurrir a técnicas de análisis funcional, que repasaremos en la siguiente sección.
+
+ \section{La teoría local: Nociones de análisis funcional}
+ \subsection{Espacios de Hilbert}
+ En primer lugar, recordemos algunas definiciones y resultados básicos sobre espacios de Hilbert.
+ \begin{defn}
+   Un \emph{espacio de Hilbert (complejo)}  es un espacio vectorial complejo equipado de un producto hermítico $\esc{\cdot,\cdot}$ que es completo con respecto a la métrica inducida por este producto.
+ \end{defn}
+ \begin{ejemplo}
+   El ejemplo más importante de espacio de Hilbert complejo de dimensión infinita es $L^2(U)$, con $U\subset \CC^n$ un conjunto abierto, conexo y acotado. Este espacio está definido\footnote{Técnicamente, los elementos de $L^2(U)$ son clases de equivalencia de funciones de cuadrado integrable, donde dos funciones se consideran equivalentes si sus valores difieren tan solo en un conjunto de medida nula.} por
+   \begin{equation*}
+     L^2(U)= \left\{ f:U \rightarrow \CC : \int_U f^2 < \infty \right\}.
+   \end{equation*}
+   El producto hermítico viene dado por
+   \begin{equation*}
+     \esc{f,g}=\int_U \bar{f} g.
+   \end{equation*}
+ \end{ejemplo}
+ \begin{defn}
+   Sean $X$ e $Y$ dos espacios de Hilbert. Un operador lineal $T:X\rightarrow Y$ se dice \emph{acotado} si existe una constante $C$ tal que
+   \begin{equation*}
+     \norm{Tx}_Y \leq C \norm{Tx}_X
+   \end{equation*}
+   para todo $x\in X$. Es fácil comprobar que un operador es acotado si y sólo si es continuo.
+
+   Un operador lineal acotado $L:X\rightarrow \CC$ se llama un \emph{funcional lineal acotado en $X$}. Definimos el \emph{espacio dual (topológico) de $X$} como el espacio $X^*$ formado por los funcionales lineales acotados en $X$. 
+
+   Si $T:X\rightarrow Y$ es un isomorfismo lineal acotado y con inversa acotada\footnote{El teorema de la aplicación abierta garantiza que basta pedir que $T$ sea acotado y un isomorfismo lineal para que su inversa sea acotada} (esto es, $T$ es un isomorfismo lineal y un homeomorfismo), decimos que $T$ es un \emph{isomorfismo de espacios de Hilbert}.
+ \end{defn}
+ \begin{thm}[Teorema de representación de Riesz]
+   Para cada funcional lineal acotado $L\in X^*$, existe un único elemento $x_L \in X$ tal que
+   \begin{equation*}
+     L(y) = \esc{x_L,y}
+   \end{equation*}
+   para todo $y\in X$. La aplicación 
+   \begin{align*}
+      X^*&\longrightarrow X\\ 
+       L &\longmapsto x_L 
+     \end{align*}
+     es un isomorfismo.
+ \end{thm}
+ \begin{defn}
+   Si $T:X\rightarrow X$ es un operador lineal acotado, definimos su \emph{adjunto} $T^*:X\rightarrow X$ como aquel que cumple
+   \begin{equation*}
+     \esc{Tx,y}=\esc{x,T^*y},
+   \end{equation*}
+   para todos $x,y \in X$. Decimos que $T$ es \emph{autoadjunto} si $T^*=T$.
+ \end{defn}
+ \begin{defn}
+   Un operador lineal acotado $K:X\rightarrow Y$ se dice \emph{compacto} si, para cada sucesión acotada $\left\{ x_k \right\}_{k=1}^\infty$ en $X$ existe una subsucesión $\left\{ x_{k_j} \right\}_{j=1}^\infty$ tal que $\left\{ Kx_{k_j} \right\}_{j=1}^\infty$ converge en $Y$.
+ \end{defn}
+ \begin{defn}
+   Sea $T:X\rightarrow X$ un operador lineal acotado. Se define el \emph{espectro de $T$} como el conjunto
+   \begin{equation*}
+     \sigma(T)=\left\{ \lambda \in \CC: (T-\lambda \id_X) \text{ no es biyectiva} \right\}. 
+   \end{equation*}
+   Un elemento $\lambda \in \sigma(T)$ se dice un \emph{autovalor de $T$} si $\ker(T-\lambda \id_X)\neq \left\{ 0 \right\}$. El conjunto de los autovalores de $T$ se llama el \emph{espectro puntual de $T$} y se denota por $\sigma_p(T)$. Dado $\lambda \in \sigma_p(T)$, un elemento $x\in \ker(T-\lambda \id_X)$ es un \emph{autovector de $T$ con autovalor $\lambda$}. Es decir, si $x\in X$ es un autovalor de $T$ con autovalor $\lambda$, entonces
+   \begin{equation*}
+     Tx = \lambda x.
+   \end{equation*}
+ \end{defn}
+ \begin{defn}
+   Un espacio de Hilbert es \emph{separable} si lo es como espacio topológico, es decir, si tiene un subconjunto denso numerable.
+ \end{defn}
+
+ El teorema central en toda esta parte es el siguiente:
+ \begin{thm}[Teorema espectral]
+   Sea $X$ un espacio de Hilbert separable y $K:X\rightarrow X$ un operador lineal compacto y autoadjunto. Entonces 
+   \begin{enumerate}
+     \item $0 \in \sigma(K)$,
+     \item $\sigma(K) \setminus \left\{ 0 \right\} = \sigma_p(K) \setminus \left\{ 0 \right\}$,
+     \item $\sigma(K)$ es finito o es una sucesión que tiende a cero,
+     \item existe una base ortonormal de $X$ que consiste en autovectores de $K$, es decir, podemos dar una descomposición
+       \begin{equation*}
+	 X=\bigoplus_{i=1}^\infty E(\lambda_i),
+       \end{equation*}
+       con $\sigma_p(K)=\left\{ \lambda_i: i\in \mathbb{N} \right\}$ y $E(\lambda_i)$ el subespacio formado por los autovectores de autovalor $\lambda_i$.
+   \end{enumerate}
+ \end{thm}
+
+
+ \subsection{Espacios de Sobolev}
+\begin{ejemplo}\label{ejemplo1}
+  Supongamos que se nos da un problema de contorno, como por ejemplo
+  \begin{equation}
+    \begin{cases}
+      -y''+2y=e^x+\cos x \\
+      y(0)=1, y(1)=2.
+    \end{cases}
+    \label{eq:ejemplo1}
+  \end{equation}
+  Es fácil definir lo que entendemos como una solución del problema~\eqref{eq:ejemplo1}: una función $y\in C^2([0,1])$ que cumpla la ecuación y los datos. Sin embargo, podemos cambiar la función a la derecha de la ecuación por otra con una forma más complicada, por ejemplo, que no sea continua, como
+  \begin{equation*}
+    f(x)=
+    \begin{cases}
+      1, & x \in [0,1/2) \\
+      0, & x \in [1/2,1).
+    \end{cases}
+  \end{equation*}
+  De modo que ahora queremos resolver el problema de contorno
+  \begin{equation}
+    \begin{cases}
+      -y''+2y=f(x) \\
+      y(0)=1, y(1)=2.
+    \end{cases}
+    \label{eq:ejemplo2}
+  \end{equation}
+  En este caso ya no podemos pedir que la solución sea $C^2$, en esta sección vamos a tratar de ver en qué espacios pueden vivir estas funciones que podemos entender como «soluciones» de problemas como el~\eqref{eq:ejemplo2}. 
+
+  En primer lugar, vamos a cambiar ligeramente el aspecto de nuestra ecuación. Para ello consideramos una función $\varphi$ en $[0,1]$, con $\varphi(0)=\varphi(1)=0$ tan buena como queramos, por ejemplo $\varphi\in C^{\infty}([0,1])$ y la multiplicamos por la ecuación
+  \begin{equation*}
+    -y''\varphi + 2y \varphi = f \varphi.
+  \end{equation*}
+  Integramos a ambos lados y obtenemos
+  \begin{equation*}
+    -\int_0^1 y'' \varphi + \int_0^1 2y \varphi = \int_0^1 f \varphi.
+  \end{equation*}
+  Integrando por partes
+  \begin{equation*}
+    \int_0^1 y' \varphi' + 2 \int_0^1 y \varphi = \int_0^1 f \varphi.
+  \end{equation*}
+  Buscaremos entonces qué funciones $y$ pueden hacer que estas integrales tengan sentido. Los espacios en los que viven estas $y$ serán los que llamaremos \emph{espacios de Sobolev}. 
+  Para que la integral $\int_0^1 y \varphi$ tenga sentido basta pedir que $y\in L^2([0,1])$. Sin embargo, ¿qué le tenemos que pedir a $y$ para que $\int_0^1 y'\varphi'$ tenga sentido? ¿Qué es $y'$? ¿Se puede definir algún tipo de \emph{derivada}?
+
+  Más en general, si para una función $\varphi$, denotamos por $\varphi_{x_i}$ a la derivada parcial $\frac{\partial \varphi}{\partial x_i}$, dada una función $u$, queremos hallar una función «derivada débil» (respecto de $x_i$), que podremos denotar como $u_{x_i}$ que cumpla la fórmula de integración por partes. Es decir, $u_{x_i}$ ha de ser tal que
+  \begin{equation*}
+    \int u \varphi_{x_i}=-\int u_{x_i} \varphi,
+  \end{equation*}
+  para cualquier $\varphi$ «suficientemente buena» y de soporte compacto. De nuevo, para que esta integral tenga sentido, es necesario que esta $u_{x_i}\in L^2([0,1])$. \qed
+\end{ejemplo}
+
+\begin{defn}[Derivada débil y espacios de Sobolev]
+ Sea $U\subset \CC^n$ un subconjunto abierto y conexo y sea $u\in L^2(U)$. Denotamos $(z_1=x_1+iy_1,\dots,z_n=x_n+iy_n)$ las coordenadas en $U$. Se dice que una función $v\in L^2(U)$ es la \emph{derivada débil de $u$ respecto de $x_i$} si 
+  \begin{equation*}
+    \int_U u \varphi_{x_i}= -\int_{U} v \varphi
+  \end{equation*}
+  para toda $\varphi\in C^{\infty}(U)$ con soporte compacto en $U$. Esta $v$ se denota como $u_{x_i}$. Análogamente, definimos la derivada débil $u_{y_i}$.
+
+  Más generalmente, para dos multiíndices $\alpha=(\alpha_{i_1},\dots,\alpha_{i_p})$, $\beta=(\beta_{j_1},\dots,\beta_{j_p})$ con $1\leq i_1 <\cdots < i_r \leq N$, $1\leq j_1 <\cdots < j_r \leq N$, se dice que una función $v\in L^2(U)$ es una \emph{derivada débil de $u$ respecto de los multiíndices $\alpha$ y $\beta$}  si
+  \begin{equation*}
+    \int_{\Omega} u D^{\alpha,\beta} \varphi = (-1)^{|\alpha|} \int_{\Omega} v \varphi
+  \end{equation*}
+  para toda $\varphi \in C^{\infty}_c(\Omega)$, donde 
+  \begin{equation*}
+    D^{\alpha}=\frac{\partial^{|\alpha|+|\beta|}}{\partial x_{i_1}^{\alpha_{i_1}}\cdots \partial x_{i_r}^{\alpha_{i_r}}\partial y_{j_1}^{\beta_{j_1}}  \cdots \partial y_{j_n}^{\beta_{j_n}}}.
+  \end{equation*}
+  Esta $v$ se denota como $D^\alpha u$.
+
+  Finalmente, se definen los \emph{espacios de Sobolev} como los conjuntos
+  \begin{equation*}
+    H^{k}(U)=\left\{ u \in L^2(U): D^j u \in L^2(U), \text{ para todo } |j|\leq k  \right\}.
+  \end{equation*}
+\end{defn}
+
+\begin{ejemplo}
+  Sea $f(x)=|x|$ para $x\in (-1,1)$. Definimos
+  \begin{equation*}
+    f'(x)=
+    \begin{cases}
+      1 & x >0, \\
+      -1 & x<0.
+    \end{cases}
+  \end{equation*}
+  Veamos que, en efecto, $f'$ es la derivada débil de $f$. Basta comprobar la fórmula: dada $\varphi \in C^{\infty}_c((0,1))$, tenemos que
+  \begin{align*}
+    \int_{-1}^1 f(x) \varphi'(x) dx & = \int_{-1}^1 |x| \varphi'(x) dx = \int_{-1}^0 -x\varphi'(x) dx + \int_0^1 x \varphi'(x) dx \\ & = \int_{-1}^0 \varphi(x) dx - \int_0^1 \varphi(x) dx = -\int_{-1}^1 f'(x) \varphi(x) dx.
+  \end{align*}
+  \qed
+\end{ejemplo}
+
+  En $H^k(U)$, podemos definir el producto escalar
+  \begin{equation*}
+    \esc{u,v}_{H^k(U)}=\sum_{|\alpha|\leq k} \esc{D^\alpha u, D^\alpha v}_{L^2(U)},   
+  \end{equation*}
+  en particular
+  \begin{equation*}
+    \esc{u,v}_{H^1(U)}=\esc{u,v}_{L^2(U)}+\esc{du, d v}_{L^2(U)}.
+  \end{equation*}
+  Este producto escalar dota a los espacios $H^k(U)$ de la estructura de espacio prehilbertiano. Puede probarse, que, de hecho, estos espacios son completos, de modo que los $H^k(U)$ son espacios de Hilbert.
+
+  Denotamos por $C^\infty_c(U)$ a todas las funciones diferenciables en $U$ con soporte compacto. Claramente, $C^\infty_c(U) \subset H^k_0(U)$ para todo $k\in \NN$. Definimos $H^k_0(U)$ como la adherencia de $C^\infty_c(U)$ en $H^k(U)$. Este espacio $H^k_0(U)$ es completo por ser cerrado y hereda el producto escalar de $H^k(U)$, de modo que es un espacio de Hilbert.
+
+  Enunciamos ahora dos teoremas fundamentales sobre espacios de Sobolev que nos serán de utilidad:
+  \begin{thm}[Inclusiones de Sobolev]
+    Se tiene la siguiente inclusión
+    \begin{equation*}
+      H^{\left[ \frac{n}{2} \right]+1+k}(U) \subset C^k(U)
+    \end{equation*}
+    En consecuencia
+    \begin{equation*}
+      \bigcap_{k} H^k(U) \subset C^{\infty}(U).
+    \end{equation*}
+  \end{thm}
+  \begin{thm}[Rellich-Kondrachov]
+    El espacio $H^k(U)$ está \emph{contenido de forma compacta} en $L^2(U)$, es decir, se tiene una inclusión
+$i:	H^k(U) \hookrightarrow L^2(U)$,
+    con $i$ operador compacto.
+  \end{thm}
+\end{document}
+
+
