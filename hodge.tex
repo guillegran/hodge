@@ -10,7 +10,6 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
-\usepackage{graphicx}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows, babel}
@@ -37,11 +36,8 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\pr}{\mathrm{pr}}
-
-\newcommand{\cte}{\mathrm{cte.}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\eps}{\varepsilon}
-
 
 \begin{document}
 \maketitle
@@ -259,7 +255,7 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
        \begin{equation*}
 	 X=\bigoplus_{i=1}^\infty E(\lambda_i),
        \end{equation*}
-       con $\sigma_p(K)=\left\{ \lambda_i: i\in \mathbb{N} \right\}$ y $E(\lambda_i)$ el subespacio formado por los autovectores de autovalor $\lambda_i$.
+       con $\sigma_p(K)=\left\{ \lambda_i: i\in \mathbb{N} \right\}$ y $E(\lambda_i)$ subespacio de dimensión finita formado por los autovectores de autovalor $\lambda_i$.
    \end{enumerate}
  \end{thm}
 
@@ -419,15 +415,14 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
    \begin{equation*}
      \esc{\alpha,\beta}_{D} = \esc{\alpha,\beta}_{L^2} + \esc{\dol \alpha, \dol \beta}_{L^2} + \esc{\dol^*\alpha, \dol^*\beta}_{L^2}.
    \end{equation*}
-   La clave ahora es que localmente los operadores $\dol$ y $\dol^*$ actúan como $\partial_{\bar{z}}$ y $\partial_{z}$, respectivamente, de modo que no es difícil convencerse de que esta métrica es equivalente a la $1$-métrica de Sobolev $\esc{\cdot,\cdot}_{H^1}$. Así, si completamos $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_D$ obtenemos precisamente $\Omega^{p,q}_{H^1}(M)$. Ahora,
+   La clave ahora es que localmente los operadores $\dol$ y $\dol^*$ actúan como $\partial_{\bar{z}}$ y $\partial_{z}$, respectivamente, de modo que no es difícil convencerse de que esta métrica es equivalente a la $1$-métrica de Sobolev $\esc{\cdot,\cdot}_{H^1}$. Así, si completamos $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_D$ obtenemos precisamente $\Omega^{p,q}_{H^1}(M)$, de modo que usaremos indistintamente la notación $\esc{\cdot,\cdot}_{H^1}$ para la métrica $\esc{\cdot,\cdot}_D$. Ahora,
    \begin{equation*}
-     \norm{\dol \omega}_{L^2}^2 = \esc{\dol \omega,\dol \omega}_{L^2} \leq \esc{\dol \omega, \dol \omega}_{L^2} + \esc{\dol^* \omega, \dol^*\omega}_{L^2} + \esc{\omega, \omega}_{L^2} = \esc{\omega}_{H^1}.
+     \norm{\dol \omega}_{L^2}^2 = \esc{\dol \omega,\dol \omega}_{L^2} \leq \esc{\dol \omega, \dol \omega}_{L^2} + \esc{\dol^* \omega, \dol^*\omega}_{L^2} + \esc{\omega, \omega}_{L^2} = \esc{\omega,\omega}_{H^1}.
    \end{equation*}
    Por tanto, podemos extender por densidad $\dol$ a un operador que sí es acotado
    \begin{center}
      \begin{tikzcd}
-       \Omega^{p,q}(M)       \arrow{rr}{\dol}\arrow[hook]{dd}[anchor=east]{} && \Omega^{p,q+1}(M)\arrow[hook]{dd}[anchor=west]{} \\ 
-        && \\
+       \Omega^{p,q}(M)       \arrow{rr}{\dol}\arrow[hook]{d}[anchor=east]{} && \Omega^{p,q+1}(M)\arrow[hook]{d}[anchor=west]{} \\ 
 	\Omega^{p,q}_{H^1}(M)\arrow{rr}[anchor=south]{\dol} && \Omega^{p,q+1}_{L^2}(M).
       \end{tikzcd}
     \end{center}
@@ -526,7 +521,7 @@ ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
     \begin{equation*}
       \Omega^{p,q}_{L^2}(M)=\bigoplus_{i=1}^{\infty} E(\mu_i),
     \end{equation*}
-    con $E(\mu_i)$ es subespacio formado por los autovectores de $T^{-1}$ de autovalor $\mu_i$. Recordemos que $\alpha$ era un autovector de $\Delta$ con autovalor $\lambda$ sólo si lo era de $T^{-1}$ con autovalor $\frac{1}{1+\lambda}$. Por tanto, $E(1)=\mathcal{H}^{p,q}_{L^2}(M)=\ker \Delta$ y tenemos la descomposición
+    con $E(\mu_i)$ subespacio de dimensión finita formado por los autovectores de $T^{-1}$ de autovalor $\mu_i$. Recordemos que $\alpha$ era un autovector de $\Delta$ con autovalor $\lambda$ sólo si lo era de $T^{-1}$ con autovalor $\frac{1}{1+\lambda}$. Por tanto, $E(1)=\mathcal{H}^{p,q}_{L^2}(M)=\ker \Delta$ y tenemos la descomposición
     \begin{equation*}
       \Omega^{p,q}_{L^2}(M)=\mathcal{H}^{p,q}_{L^2}(M)\oplus(\mathcal{H}^{p,q}_{L^2}(M))^{\perp}.
     \end{equation*}
@@ -554,14 +549,59 @@ ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
     \begin{equation*}
       \omega=\omega^h + \omega^{\perp},
     \end{equation*}
-    con $\omega^h\in \mathcal{H}^{p,q}(M)$ y $\omega^{\perp} \in (\mathcal{H}^{p,q}(M))^{\perp}$. Ahora, en $(\mathcal{H}^{p,q}(M))^{\perp}$ el operador $\Delta$ es acotado y, como la sucesión $\left\{ \mu_i \right\}_{i\in \NN}$ de los autovalores de $T^{-1}$ era decreciente a cero, la sucesión $\left\{ \lambda_i=\frac{1-\mu_i}{\mu_i} \right\}_{i\in \NN}$ de los autovalores de $\Delta$ es una sucesión creciente y podemos tomar su elemento más pequeño, $\lambda_1$, sin pérdida de generalidad. Tenemos entonces la cota
+    con $\omega^h\in \mathcal{H}^{p,q}(M)$ y $\omega^{\perp} \in (\mathcal{H}^{p,q}(M))^{\perp}$. Ahora, el operador $\Delta$ es acotado y, como la sucesión $\left\{ \mu_i \right\}_{i\in \NN}$ de los autovalores de $T^{-1}$ era decreciente a cero, la sucesión $\left\{ \lambda_i=\frac{1-\mu_i}{\mu_i} \right\}_{i\in \NN}$ de los autovalores de $\Delta$ es una sucesión creciente y podemos tomar su elemento más pequeño no nulo, $\lambda_1$, sin pérdida de generalidad. Tenemos entonces la cota
     \begin{equation*}
-      \norm{\Delta \alpha}_{L^2} \geq |\lambda_1| \norm{\alpha}_{L^2}.
+      \norm{\Delta \alpha}_{L^2} \geq |\lambda_1| \norm{\alpha}_{L^2},
     \end{equation*}
-
-
-
+    en $(\mathcal{H}^{p,q}(M))^{\perp}$.
+    Esto implica que $\Delta$ es invertible en $(\mathcal{H}^{p,q}(M))^{\perp}$ y su inversa es el \emph{operador de Green}
+    \begin{equation*}
+      G\omega = 
+      \begin{cases}
+	0, & \text{si } \omega \in \mathcal{H}^{p,q}(M), \\
+	\frac{1}{\lambda_n}\omega, & \text{si } \omega \in E(\frac{1}{1+\lambda_n}).
+      \end{cases}
+    \end{equation*}
+    Ahora,
+    \begin{equation*}
+      \Delta \omega = \Delta \omega^h + \Delta \omega^\perp = \Delta \omega^\perp
+    \end{equation*}
+    y, como $\omega^\perp \in (\mathcal{H}^{p,q}(M))^{\perp}$, 
+    \begin{equation*}
+      \omega^\perp=G\Delta \omega^\perp=G \Delta \omega.
+    \end{equation*}
+    Por tanto, podemos escribir
+    \begin{equation*}
+      \omega = \omega^h + G\Delta \omega = \omega^h + G\dol^*\dol\omega + G\dol \dol^*\omega.
+    \end{equation*}
     
+    Supongamos ahora que $\omega$ es $\dol$-cerrada, es decir, que $\dol \omega=0$. En tal caso
+    \begin{equation*}
+      \omega=\omega^h + G\dol \dol^* \omega.
+    \end{equation*}
+    Como $\dol$ y $\dol^*$ conmutan con $\Delta$ también lo hacen con $G$ y tenemos
+    \begin{equation*}
+      \omega= \omega^h + \dol(G\dol^*\omega).
+    \end{equation*}
+    En conclusión $[\omega]=[\omega^h]$ y la aplicación
+    \begin{align*}
+      \Omega^{p,q}(M)&\longrightarrow \mathcal{H}^{p,q}(M)\\ 
+        \omega &\longmapsto \omega^h 
+      \end{align*}
+      es una proyección ortogonal que desciende a un isomorfismo
+      \begin{align*}
+	H^{p,q}(M)&\longrightarrow \mathcal{H}^{p,q}(M)\\ 
+      [\omega] &\longmapsto \omega^h .
+	\end{align*}
+	Esto finaliza la demostración del teorema de Hodge.
+
+	Un corolario inmediato de la demostración es el siguiente:
+	\begin{corol}
+	  Los grupos de cohomología de Dolbeaut de una variedad compleja compacta son de dimensión finita.
+	\end{corol}
+
+	\section{Consecuencias del teorema de Hodge}
+
 \end{document}
 
 
