@@ -21,7 +21,7 @@
 
 \newtheorem{thm}{Teorema}[section]
 \newtheorem{prop}[thm]{Proposición}
-\newtheorem{lema}{Lema}
+\newtheorem{lema}[thm]{Lema}
 \newtheorem{corol}[thm]{Corolario}
 \theoremstyle{definition} \newtheorem{defn}[thm]{Definición}
 \theoremstyle{definition} \newtheorem{ejemplo}[thm]{Ejemplo}
@@ -224,11 +224,11 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
      es un isomorfismo.
  \end{thm}
  \begin{defn}
-   Si $T:X\rightarrow X$ es un operador lineal acotado, definimos su \emph{adjunto} $T^*:X\rightarrow X$ como aquel que cumple
+   Si $T:X\rightarrow Y$ es un operador lineal acotado, definimos su \emph{adjunto} $T^*:Y\rightarrow X$ como aquel que cumple
    \begin{equation*}
-     \esc{Tx,y}=\esc{x,T^*y},
+     \esc{Tx,y}_Y=\esc{x,T^*y}_X,
    \end{equation*}
-   para todos $x,y \in X$. Decimos que $T$ es \emph{autoadjunto} si $T^*=T$.
+   para todo $x \in X$ y para todo $y\in Y$. Decimos que $T:X\rightarrow X$ es \emph{autoadjunto} si $T^*=T$.
  \end{defn}
  \begin{defn}
    Un operador lineal acotado $K:X\rightarrow Y$ se dice \emph{compacto} si, para cada sucesión acotada $\left\{ x_k \right\}_{k=1}^\infty$ en $X$ existe una subsucesión $\left\{ x_{k_j} \right\}_{j=1}^\infty$ tal que $\left\{ Kx_{k_j} \right\}_{j=1}^\infty$ converge en $Y$.
@@ -236,9 +236,10 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
  \begin{defn}
    Sea $T:X\rightarrow X$ un operador lineal acotado. Se define el \emph{espectro de $T$} como el conjunto
    \begin{equation*}
-     \sigma(T)=\left\{ \lambda \in \CC: (T-\lambda \id_X) \text{ no es biyectiva} \right\}. 
+     \sigma(T)=\left\{ \lambda \in \CC: (T-\lambda I) \text{ no es biyectiva} \right\},
    \end{equation*}
-   Un elemento $\lambda \in \sigma(T)$ se dice un \emph{autovalor de $T$} si $\ker(T-\lambda \id_X)\neq \left\{ 0 \right\}$. El conjunto de los autovalores de $T$ se llama el \emph{espectro puntual de $T$} y se denota por $\sigma_p(T)$. Dado $\lambda \in \sigma_p(T)$, un elemento $x\in \ker(T-\lambda \id_X)$ es un \emph{autovector de $T$ con autovalor $\lambda$}. Es decir, si $x\in X$ es un autovalor de $T$ con autovalor $\lambda$, entonces
+   con $I$ el operador identidad.
+   Un elemento $\lambda \in \sigma(T)$ se dice un \emph{autovalor de $T$} si $\ker(T-\lambda I)\neq \left\{ 0 \right\}$. El conjunto de los autovalores de $T$ se llama el \emph{espectro puntual de $T$} y se denota por $\sigma_p(T)$. Dado $\lambda \in \sigma_p(T)$, un elemento $x\in \ker(T-\lambda I)$ es un \emph{autovector de $T$ con autovalor $\lambda$}. Es decir, si $x\in X$ es un autovalor de $T$ con autovalor $\lambda$, entonces
    \begin{equation*}
      Tx = \lambda x.
    \end{equation*}
@@ -395,11 +396,172 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
    \begin{equation*}
      \tilde{\varphi}_\alpha^*:\Omega^{p,q}(U_\alpha) \rightarrow (C^\infty(\tilde{U}_{\alpha}))^r.
    \end{equation*}
-   Definimos la $k$-métrica de Sobolev en $\Omega^{p,q}(M)$ como la métrica hermítica
+   Definimos la \emph{$k$-métrica de Sobolev} en $\Omega^{p,q}(M)$ como la métrica hermítica
    \begin{equation*}
      \esc{\omega,\sigma}_{H^k}=\sum_\alpha \sum_{i=1}^r \esc{\pr_i (\tilde{\varphi}_\alpha^* \rho_\alpha \omega),\pr_i(\tilde{\varphi}_\alpha^* \rho_\alpha \sigma)}_{L^2(U_\alpha)},
    \end{equation*}
    con $\pr_i: (C^\infty(\tilde{U}_\alpha))^r \rightarrow C^\infty(\tilde{U}_\alpha)$ la $i$-ésima proyección. 
+   Denotamos por $\Omega^{p,q}_{H^k}(M)$ la compleción de $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_{H^k}$. Análogamente, denotamos $\Omega^{p,q}_{L^2}(M)$ a la compleción de $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_{L^2}$, definida en la sección 1. Así, los espacios $(\Omega^{p,q}_{L^2}(M),\esc{\cdot,\cdot}_{L^2})$ y $(\Omega^{p,q}_{H^k}(M),\esc{\cdot,\cdot}_{H^k})$ son espacios de Hilbert.
+   
+   Los resultados fundamentales de la teoría local se generalizan a nuestro caso, de modo que tenemos los siguientes teoremas:
+   \begin{thm}[Inclusión global de Sobolev]
+     Se tiene la siguiente inclusión
+     \begin{equation*}
+     \bigcap_k\Omega^{p,q}_{H^k(M)}\subset \Omega^{p,q}(M)
+     \end{equation*}
+   \end{thm}
+   \begin{thm}[Rellich-Kondrachov, versión global]
+  Se tiene la siguiente inclusión compacta  $$\Omega_{H^k}^{p,q}(M) \subset \Omega_{L^2}^{p,q}(M).$$ 
+   \end{thm}
+
+   \subsection{El producto de Dirichlet}
+   Volviendo a lo que estábamos tratando en la primera sección, recordemos que uno de nuestros problemas era que en general el operador $\dol$ no es acotado. La idea entonces es encontrar una métrica en $\Omega^{p,q}(M)$ en la que $\dol$ pueda ser acotado. Para ello definimos el \emph{producto de Dirichlet}:
+   \begin{equation*}
+     \esc{\alpha,\beta}_{D} = \esc{\alpha,\beta}_{L^2} + \esc{\dol \alpha, \dol \beta}_{L^2} + \esc{\dol^*\alpha, \dol^*\beta}_{L^2}.
+   \end{equation*}
+   La clave ahora es que localmente los operadores $\dol$ y $\dol^*$ actúan como $\partial_{\bar{z}}$ y $\partial_{z}$, respectivamente, de modo que no es difícil convencerse de que esta métrica es equivalente a la $1$-métrica de Sobolev $\esc{\cdot,\cdot}_{H^1}$. Así, si completamos $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_D$ obtenemos precisamente $\Omega^{p,q}_{H^1}(M)$. Ahora,
+   \begin{equation*}
+     \norm{\dol \omega}_{L^2}^2 = \esc{\dol \omega,\dol \omega}_{L^2} \leq \esc{\dol \omega, \dol \omega}_{L^2} + \esc{\dol^* \omega, \dol^*\omega}_{L^2} + \esc{\omega, \omega}_{L^2} = \esc{\omega}_{H^1}.
+   \end{equation*}
+   Por tanto, podemos extender por densidad $\dol$ a un operador que sí es acotado
+   \begin{center}
+     \begin{tikzcd}
+       \Omega^{p,q}(M)       \arrow{rr}{\dol}\arrow[hook]{dd}[anchor=east]{} && \Omega^{p,q+1}(M)\arrow[hook]{dd}[anchor=west]{} \\ 
+        && \\
+	\Omega^{p,q}_{H^1}(M)\arrow{rr}[anchor=south]{\dol} && \Omega^{p,q+1}_{L^2}(M).
+      \end{tikzcd}
+    \end{center}
+    Análogamente, podemos extender $\dol^*$ a $\dol^*:\Omega^{p,q}_{H^1}(M) \rightarrow \Omega^{p,q}_{L^2}(M)$ y se cumple que
+    \begin{equation*}
+      \esc{\dol \alpha, \beta}_{L^2}= \esc{\alpha, \dol^*\beta}_{L^2}
+    \end{equation*}
+    para todo $\alpha \in \Omega^{p,q}_{H^1}(M)$ y para todo $\beta \in \Omega^{p,q+1}_{H^1}(M)$.
+
+    \section{La descomposición espectral}
+    Recordemos que habíamos reducido nuestro problema original a buscar soluciones de la ecuación de Laplace, es decir, a encontrar formas $\alpha$ tales que $\Delta \alpha =0$. Esto es lo mismo que hallar formas $\alpha$ con
+    \begin{equation*}
+      (I + \Delta) \alpha =\alpha.
+    \end{equation*}
+    El operador $T=I+\Delta$ es (al menos débilmente) invertible y además, una forma es un autovector de $T^{-1}$ si y sólo si lo es de $\Delta$. En efecto, si existe $\alpha\neq 0$ tal que $T^{-1}\alpha = \mu \alpha$, con $\mu \neq 0$ (esto es seguro porque $T$ es invertible), entonces $(I+\Delta)\mu \alpha = \alpha$, luego
+    \begin{equation*}
+      \Delta \alpha = \frac{1-\mu}{\mu}\alpha.
+    \end{equation*}
+    Por tanto, una forma $\alpha$ es un autovector de $\Delta$ con autovalor $\lambda$ si y sólo si es un autovector de $T^{-1}$ con autovalor $\frac{1}{1+\lambda}$. Tenemos entonces que nuestro problema se reduce a estudiar el espectro de $T^{-1}$. En particular, $\ker \Delta$ será precisamente el espacio $E(1)$ de autovectores de $T$ con autovalor $1$.
+
+    En primer lugar, busquemos ese operador «inverso» de $T$. Para ello, dada una forma $\alpha\in \Omega^{p,q}_{L^2}(M)$ buscamos una forma $\beta$ tal que $T\beta=\alpha$, al menos formalmente. Ahora, lo que buscamos son soluciones débiles, para ello, consideramos una forma diferenciable $\omega\in\Omega^{p,q}(M) $, de modo que
+    \begin{equation*}
+      \esc{T\beta,\omega}_{L^2}=\esc{\alpha,\omega}_{L^2}.
+    \end{equation*}
+    Pero, como $T$ es autoadjunto, ya que $\Delta$ e $I$ lo son, realmente lo que buscamos es una $\beta$ que verifique la igualdad
+    \begin{equation*}
+      \esc{\beta,T\omega}_{L^2}=\esc{\alpha,\omega}_{L^2},
+    \end{equation*}
+    que sí que tiene sentido, no solo formalmente. Nótese además que, si $\beta \in \Omega^{p,q}_{H^1}(M)$ y $\omega \in \Omega^{p,q}(M)$, entonces
+    \begin{align*}
+      \esc{\beta,\omega}_{H^1}&=\esc{\beta,\omega}_{L^2}+\esc{\dol \beta,\dol \omega}_{L^2}+ \esc{\dol^*\beta,\dol^*\beta}_{L^2}\\ 
+      &=\esc{\beta,\omega}_{L^2} + \esc{\beta,\dol^*\dol \omega}_{L^2}+ \esc{\beta, \dol \dol^* \omega}_{L^2} \\
+      &= \esc{\beta,(I+\Delta)\omega}_{L^2}=\esc{\beta,T\omega}_{L^2}.
+    \end{align*}
+
+    \begin{lema}
+      Sea $\alpha \in \Omega^{p,q}_{L^2}(M)$.
+      \begin{enumerate}
+	\item Existe una única $T^{-1}\alpha \in \Omega^{p,q}_{H^1}(M)$ tal que
+	  \begin{equation*}
+	    \esc{\alpha,\omega}_{L^2}=\esc{T^{-1}\alpha,\omega}_{H^1}=\esc{T^{-1}\alpha,T\omega}_{L^2},
+	  \end{equation*}
+	  para toda $\omega \in \Omega^{p,q}(M)$.
+	\item El operador lineal
+	  \begin{center}
+	    \begin{tikzcd}
+	      \Omega^{p,q}_{L^2}(M) \arrow{r}{T^{-1}}\arrow[bend left]{rr}{T^{-1}} & \Omega^{p,q}_{H^1}(M) \arrow[hook]{r} & \Omega^{p,q}_{L^2}(M)
+	    \end{tikzcd}
+	  \end{center}
+	  es acotado, compacto y autoadjunto.
+      \end{enumerate}
+    \end{lema}
+    \begin{proof}
+ El funcional
+ \begin{align*}
+   L_\alpha :\Omega^{p,q}(M)&\longrightarrow \CC\\ 
+   \omega &\longmapsto \esc{\alpha,\omega}_{L^2} 
+   \end{align*}
+   verifica
+   \begin{equation*}
+     |\esc{\alpha,\omega}_{L^2}|\leq \norm{\alpha}_{L^2}\norm{\omega}_{L^2} \leq \norm{\alpha}_{L^2} \norm{\omega}_{H^1},
+   \end{equation*}
+   de modo que se extiende por densidad a un funcional
+ \begin{align*}
+   L_\alpha :\Omega_{H^1}^{p,q}(M)&\longrightarrow \CC\\ 
+   \omega &\longmapsto \esc{\alpha,\omega}_{L^2} .
+   \end{align*}
+   Como $\Omega_{H^1}^{p,q}(M)$ es un espacio de Hilbert, el teorema de representación de Riesz garantiza que existe una única $\beta \in \Omega^{p,q}_{H^1}(M)$ tal que 
+   \begin{equation*}
+     \esc{\beta,\omega}_{H^1} = L_\alpha(\omega)=\esc{\alpha,\omega}_{L^2},
+   \end{equation*}
+   para toda $\omega \in \Omega^{p,q}_{H^1}(M)$. 
+
+   Ahora, puedo definir el operador
+   \begin{align*}
+     T^{-1} :\Omega^{p,q}_{L^2}(M)&\longrightarrow \Omega^{p,q}_{H^1}(M)\\ 
+       \alpha &\longmapsto \beta, 
+     \end{align*}
+     que es autoadjunto, por serlo $T$. Además, $T^{-1}$ es acotado; en efecto,
+     \begin{equation*}
+       \norm{T^{-1}\alpha}_{H^1}^2=\esc{T^{-1}\alpha,T^{-1}\alpha}_{H^1}=\esc{\alpha,T^{-1}\alpha}_{L^2} \leq \norm{\alpha}_{L^2} \norm{T^{-1}\alpha}_{L^2};
+     \end{equation*}
+ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
+     \begin{equation*}
+       \norm{T^{-1}\alpha}_{H^1}^2\leq \norm{\alpha}_{L^2} \norm{T^{-1}\alpha}_{L^2}
+       \leq \frac{1}{2} \norm{T^{-1}\alpha}^2_{L^2} + \frac{1}{2}\norm{\alpha}^2_{L^2} ;
+     \end{equation*}
+     finalmente, como $\norm{\cdot}_{L^2} \leq \norm{\cdot}_{H^1}$, tenemos que
+     \begin{equation*}
+       \norm{T^{-1}\alpha}_{H^1} \leq \norm{\alpha}^2_{H^1}.
+     \end{equation*}
+     Por último, como por el teorema de Rellich-Kondrachov la inclusión $\Omega^{p,q}_{H^1}(M) \hookrightarrow \Omega^{p,q}_{L^2}(M)$ es compacta, $K$ es un operador acotado y compacto y además es autoadjunto por serlo $T^{-1}$.
+    \end{proof}
+
+    En resumen, hemos construido un operador lineal $T^{-1}:\Omega^{p,q}_{L^2}(M)\rightarrow \Omega^{p,q}_{L^2}(M)$ compacto y autoadjunto al que le podemos aplicar el teorema espectral, que garantiza que su espectro $\sigma_p(T^{-1})=\left\{ \mu_i:i\in \NN \right\}$ es finito o es una sucesión que tiende a cero y que tenemos una descomposición
+    \begin{equation*}
+      \Omega^{p,q}_{L^2}(M)=\bigoplus_{i=1}^{\infty} E(\mu_i),
+    \end{equation*}
+    con $E(\mu_i)$ es subespacio formado por los autovectores de $T^{-1}$ de autovalor $\mu_i$. Recordemos que $\alpha$ era un autovector de $\Delta$ con autovalor $\lambda$ sólo si lo era de $T^{-1}$ con autovalor $\frac{1}{1+\lambda}$. Por tanto, $E(1)=\mathcal{H}^{p,q}_{L^2}(M)=\ker \Delta$ y tenemos la descomposición
+    \begin{equation*}
+      \Omega^{p,q}_{L^2}(M)=\mathcal{H}^{p,q}_{L^2}(M)\oplus(\mathcal{H}^{p,q}_{L^2}(M))^{\perp}.
+    \end{equation*}
+
+    \section{Regularidad}
+    De momento sólo hemos obtenido soluciones débiles de la ecuación de Laplace. Es decir, todavía necesitamos garantizar que estas soluciones, en principio en $\Omega^{p,q}_{L^2}(M)$ son verdaderas formas \emph{diferenciables}, es decir, que de hecho están en $\Omega^{p,q}(M)$.
+
+    \begin{lema}[Regularidad]
+      Si $\alpha \in \Omega^{p,q}_{L^2}(M)$ es un autovector de $T^{-1}$, entonces $\alpha \in \Omega^{p,q}(M)$.
+    \end{lema}
+    \begin{proof}
+      Como ya vimos, localmente $\Delta$ era un verdadero laplaciano, es decir, consistía en derivadas de orden 2. Por tanto, el laplaciano de una función que tenga $k$ derivadas débiles, tendrá, al menos, $k-2$ derivadas débiles, es decir, $T:\Omega^{p,q}_{H^k}(M) \rightarrow \Omega^{p,q}_{H^{k-2}}(M)$. Por tanto, $T^{-1}:\Omega^{p,q}_{H^{k}}(M) \rightarrow \Omega^{p,q}_{H^{k+2}}(M)$.     Pero, si $\alpha\in \Omega^{p,q}_{H^k}(M)$ es un autovector de $T^{-1}$ con autovalor $\mu$, entonces $$\alpha =\frac{1}{\mu} T^{-1}\alpha \in \Omega^{p,q}_{H^{k+2}}(M).$$ Iterando, tenemos que $\alpha \in \Omega^{p,q}_{H^{N}}(M)$ para todo $N\in \NN$. Por la inclusión de Sobolev,
+      \begin{equation*}
+	\alpha \in \bigcap_k \Omega^{p,q}_{H^k}(M) \subset \Omega^{p,q}(M),
+      \end{equation*}
+      como queríamos probar.
+    \end{proof}
+    En conclusión, podemos refinar nuestra descomposición a
+    \begin{equation*}
+      \Omega^{p,q}(M)=\mathcal{H}^{p,q}(M) \oplus (\mathcal{H}^{p,q}(M))^{\perp}.
+    \end{equation*}
+
+    \section{Operador de Green}
+    En virtud de esta descomposición, tenemos que una forma $\omega \in \Omega^{p,q}(M)$ puede escribirse como 
+    \begin{equation*}
+      \omega=\omega^h + \omega^{\perp},
+    \end{equation*}
+    con $\omega^h\in \mathcal{H}^{p,q}(M)$ y $\omega^{\perp} \in (\mathcal{H}^{p,q}(M))^{\perp}$. Ahora, en $(\mathcal{H}^{p,q}(M))^{\perp}$ el operador $\Delta$ es acotado y, como la sucesión $\left\{ \mu_i \right\}_{i\in \NN}$ de los autovalores de $T^{-1}$ era decreciente a cero, la sucesión $\left\{ \lambda_i=\frac{1-\mu_i}{\mu_i} \right\}_{i\in \NN}$ de los autovalores de $\Delta$ es una sucesión creciente y podemos tomar su elemento más pequeño, $\lambda_1$, sin pérdida de generalidad. Tenemos entonces la cota
+    \begin{equation*}
+      \norm{\Delta \alpha}_{L^2} \geq |\lambda_1| \norm{\alpha}_{L^2}.
+    \end{equation*}
+
+
+
+    
 \end{document}
 
 
