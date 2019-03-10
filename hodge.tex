@@ -260,6 +260,7 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
    \end{enumerate}
  \end{thm}
 
+ Los resultados de esta sección pueden leerse en [Evans, apéndice] o en cualquier libro típico de análisis funcional, por ejemplo [Kalton] o [Limaye].
 
  \subsection{Espacios de Sobolev}
 \begin{ejemplo}\label{ejemplo1}
@@ -379,6 +380,8 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
     con $i$ operador compacto.
   \end{thm}
 
+  Los resultados de esta sección pueden verse expuestos con detalle en [Evans]. Sin embargo, recomiendo más la lectura de [Wells, capítulo 4] o de [Reiter-Schuster], que usan las propiedades de la transformada de Fourier para dar pruebas sencillas de estos resultados.
+
   \section{La teoría global}
   \subsection{Espacios de Sobolev en variedades compactas}
   Volvemos al contexto original: $M$ es una variedad compleja conexa y compacta de dimensión compleja $n$. Consideremos el fibrado $\Lambda^{p,q}(M)$ y $\left\{ U_\alpha, \varphi_\alpha \right\}$ una trivialización suya. Sea también $\left\{ \rho_\alpha \right\}$ una partición diferenciable de la unidad subordinada a $\left\{ U_\alpha \right\}$. Tenemos el diagrama
@@ -395,7 +398,7 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
    \end{equation*}
    Definimos la \emph{$k$-métrica de Sobolev} en $\Omega^{p,q}(M)$ como la métrica hermítica
    \begin{equation*}
-     \esc{\omega,\sigma}_{H^k}=\sum_\alpha \sum_{i=1}^r \esc{\pr_i (\tilde{\varphi}_\alpha^* \rho_\alpha \omega),\pr_i(\tilde{\varphi}_\alpha^* \rho_\alpha \sigma)}_{L^2(U_\alpha)},
+     \esc{\omega,\sigma}_{H^k}=\sum_\alpha \sum_{i=1}^r \esc{\pr_i (\tilde{\varphi}_\alpha^* \rho_\alpha \omega),\pr_i(\tilde{\varphi}_\alpha^* \rho_\alpha \sigma)}_{H^k(U_\alpha)},
    \end{equation*}
    con $\pr_i: (C^\infty(\tilde{U}_\alpha))^r \rightarrow C^\infty(\tilde{U}_\alpha)$ la $i$-ésima proyección. 
    Denotamos por $\Omega^{p,q}_{H^k}(M)$ la compleción de $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_{H^k}$. Análogamente, denotamos $\Omega^{p,q}_{L^2}(M)$ a la compleción de $\Omega^{p,q}(M)$ respecto de la métrica $\esc{\cdot,\cdot}_{L^2}$, definida en la sección 1. Así, los espacios $(\Omega^{p,q}_{L^2}(M),\esc{\cdot,\cdot}_{L^2})$ y $(\Omega^{p,q}_{H^k}(M),\esc{\cdot,\cdot}_{H^k})$ son espacios de Hilbert.
@@ -404,7 +407,7 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
    \begin{thm}[Inclusión global de Sobolev]
      Se tiene la siguiente inclusión
      \begin{equation*}
-     \bigcap_k\Omega^{p,q}_{H^k(M)}\subset \Omega^{p,q}(M)
+     \bigcap_k\Omega^{p,q}_{H^k}(M)\subset \Omega^{p,q}(M)
      \end{equation*}
    \end{thm}
    \begin{thm}[Rellich-Kondrachov, versión global]
@@ -433,7 +436,7 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
     \end{equation*}
     para todo $\alpha \in \Omega^{p,q}_{H^1}(M)$ y para todo $\beta \in \Omega^{p,q+1}_{H^1}(M)$.
 
-    \section{La descomposición espectral}
+    \subsection{La descomposición espectral}
     Recordemos que habíamos reducido nuestro problema original a buscar soluciones de la ecuación de Laplace, es decir, a encontrar formas $\alpha$ tales que $\Delta \alpha =0$. Esto es lo mismo que hallar formas $\alpha$ con
     \begin{equation*}
       (I + \Delta) \alpha =\alpha.
@@ -527,7 +530,7 @@ ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
       \Omega^{p,q}_{L^2}(M)=\mathcal{H}^{p,q}_{L^2}(M)\oplus(\mathcal{H}^{p,q}_{L^2}(M))^{\perp}.
     \end{equation*}
 
-    \section{Regularidad}
+    \subsection{Regularidad}
     De momento sólo hemos obtenido soluciones débiles de la ecuación de Laplace. Es decir, todavía necesitamos garantizar que estas soluciones, en principio en $\Omega^{p,q}_{L^2}(M)$ son verdaderas formas \emph{diferenciables}, es decir, que de hecho están en $\Omega^{p,q}(M)$.
 
     \begin{lema}[Regularidad]
@@ -545,7 +548,7 @@ ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
       \Omega^{p,q}(M)=\mathcal{H}^{p,q}(M) \oplus (\mathcal{H}^{p,q}(M))^{\perp}.
     \end{equation*}
 
-    \section{Operador de Green}
+    \subsection{Operador de Green}
     En virtud de esta descomposición, tenemos que una forma $\omega \in \Omega^{p,q}(M)$ puede escribirse como 
     \begin{equation*}
       \omega=\omega^h + \omega^{\perp},
@@ -631,6 +634,131 @@ Es fácil comprobar que se verifica la igualdad $\dol^*=-*\dol *$, de modo que $
       \end{tikzcd}
     \end{center}
   \end{proof}
+  \section{Generalizaciones}
+  Sea $E$ un fibrado vectorial complejo diferenciable de rango $r$ sobre $M$ equipado de una métrica hermítica $\esc{\cdot,\cdot}_E$. Definimos un producto interno $\esc{\cdot,\cdot}_{L^2}$ en el espacio $\Gamma(M,E)$ de secciones diferenciables de $E$ mediante
+  \begin{equation*}
+    \esc{\xi,\eta}_{L^2}=\int_{M} \esc{\xi(x),\eta(x)}_E \dvol_M.
+  \end{equation*}
+  Consideremos ahora $\left\{ U_\alpha,\varphi_\alpha \right\}$ una trivialización de $E$ y $\left\{ \rho_\alpha \right\}$ una PDU subordinada a $\left\{ U_{\alpha} \right\}$. 
+Tenemos el diagrama
+  \begin{center}
+    \begin{tikzcd}
+      E|_{U_\alpha}      \arrow{rr}{\varphi_\alpha}\arrow{dd}[anchor=east]{} && \tilde{U}_\alpha \times \CC^r\arrow{dd}[anchor=west]{\pr_1} \\ 
+       && \\
+       U_\alpha\arrow{rr}[anchor=south]{\tilde{\varphi}_\alpha} && \tilde{U}_\alpha,
+     \end{tikzcd}
+   \end{center}
+   de modo que tenemos un isomorfismo
+   \begin{equation*}
+     \tilde{\varphi}_\alpha^*:\Gamma(U_\alpha,E) \rightarrow (C^\infty(\tilde{U}_{\alpha}))^r.
+   \end{equation*}
+   Definimos la \emph{$k$-métrica de Sobolev} en $\Gamma(M,E)$ como la métrica hermítica
+   \begin{equation*}
+     \esc{\xi,\eta}_{H^k}=\sum_\alpha \sum_{i=1}^r \esc{\pr_i (\tilde{\varphi}_\alpha^* \rho_\alpha \omega),\pr_i(\tilde{\varphi}_\alpha^* \rho_\alpha \sigma)}_{H^k(U_\alpha)},
+   \end{equation*}
+   con $\pr_i: (C^\infty(\tilde{U}_\alpha))^r \rightarrow C^\infty(\tilde{U}_\alpha)$ la $i$-ésima proyección. 
+   Denotamos por $\Gamma_{H^k}(M,E)$ la compleción de $\Gamma(M,E)$ respecto de la métrica $\esc{\cdot,\cdot}_{H^k}$. Análogamente, denotamos $\Gamma_{L^2}(M,E)$ a la compleción de $\Gamma(M,E)$ respecto de la métrica $\esc{\cdot,\cdot}_{L^2}$, definida en la sección 1. Así, los espacios $(\Gamma_{L^2}(M,E),\esc{\cdot,\cdot}_{L^2})$ y $(\Gamma_{H^k}(M,E),\esc{\cdot,\cdot}_{H^k})$ son espacios de Hilbert.
+   
+   De nuevo se siguen cumpliendo los resultados fundamentales de la teoría local:
+   \begin{thm}[Sobolev]
+     Se tiene la siguiente inclusión
+     \begin{equation*}
+     \bigcap_k\Gamma_{H^k}(M,E)\subset \Gamma(M,E)
+     \end{equation*}
+   \end{thm}
+   \begin{thm}[Rellich-Kondrachov]
+  Se tiene la siguiente inclusión compacta  $$\Gamma_{H^k}(M,E) \subset \Gamma_{L^2}(M,E).$$ 
+   \end{thm}
+
+   \begin{defn}
+     Sean $E$ y $F$ fibrados vectoriales complejos diferenciables de rango $r$ y $s$, respectivamente, sobre $M$. Una aplicación lineal
+     \begin{align*}
+       L :\Gamma(M,E)&\longrightarrow \Gamma(M,F)
+       \end{align*}
+       es un \emph{operador diferencial de orden $k$} si para cada elección de coordenadas locales y trivializaciones locales existe un operador lineal 
+	 \begin{align*}
+	 \tilde{L} :(C^\infty(U))^r&\longrightarrow (C^\infty(U))^s\\
+	 (f_1,\dots,f_r) &\longmapsto \left(\sum_{j=1, |\alpha|\leq k}^p a^{ij}_\alpha D^\alpha f_j\right)_{i=1,\dots,s},
+	   \end{align*}
+	   con las $a_{\alpha}^{ij} \in C^\infty(U)$,
+	 tal que el siguiente diagrama conmuta
+	 \begin{center}
+	   \begin{tikzcd}
+	     (C^\infty(U))^r \arrow{r}{\tilde{L}} & (C^\infty(U))^s	     \\ 
+	     \Gamma(U,U\times \CC^r) \arrow{r}{} \arrow{u}{\cong} & \Gamma(U,U\times \CC^s) \arrow{u}{\cong} 	     \\ 
+	     \Gamma(M,E)|_U \arrow{r}{L} \arrow[hook]{u}{} & \Gamma(M,E)|_U \arrow[hook]{u}{} 	     .
+	   \end{tikzcd}
+	 \end{center}	
+	 Fijo $x\in M$, llamamos el \emph{símbolo de $L$} en un punto $v\in T_xM$ con $v\neq0$ a la aplicación lineal
+	 \begin{align*}
+	   \sigma(L)(x,v) :E_x&\longrightarrow F_x\\ 
+	   (\xi_1,\dots,\xi_r) &\longmapsto \left( \sum_{j=1,|\alpha|=k}^p a_{\alpha}^{ij}v^\alpha\xi_j\right)_{i=1,\dots,s},
+	   \end{align*}
+	   donde $v^\alpha=v_{i_1}^{\alpha_1}\dots v_{i_n}^{\alpha_n}$.
+	   Decimos que el operador $L$ es \emph{elíptico} si para cada $(x,v)\in T_xM$, $\sigma(L)(x,v)$ es un isomorfismo lineal. 
+   \end{defn}
+
+   El teorema clave para operadores elípticos es el siguiente:
+   \begin{thm}\label{espectral}
+     Sea $E$ un fibrado vectorial complejo diferenciable sobre $M$ y $T:E\rightarrow E$ un operador autoadjunto y elíptico. Entonces existen dos operadores
+     \begin{align*}
+       \pi:  \Gamma(M,E) &\longrightarrow \Gamma(M,E) \\ 
+	 G:  \Gamma(M,E) &\longrightarrow \Gamma(M,E) 
+       \end{align*}
+       tales que
+       \begin{enumerate}
+	 \item $\pi(\Gamma(M,E))=\ker T$ y $\dim \ker T < \infty$,
+	 \item $T\circ G +\pi=G\circ T + \pi = \id_{\Gamma(M,E)}$, 
+	 \item $\Gamma(M,E)= \ker T \oplus G\circ T(\Gamma(M,E)) = \ker T \oplus T\circ G(\Gamma(M,E))$.
+       \end{enumerate}
+   \end{thm}
+   \begin{defn}
+     Sean $E_0,\dots,E_N$ fibrados vectoriales complejos y $L_0,\dots,L_{N-1}$ operadores diferenciales de orden $k$ en la sucesión
+     \begin{center}
+       \begin{tikzcd}
+	 \Gamma(M,E_0)\arrow{r}{L_0} & \Gamma(M,E_1) \arrow{r}{L_1} & \Gamma(M,E_2) \arrow{r}{L_2} & \dots \arrow{r}{L_{N-1}} & \Gamma(M,E_N).
+       \end{tikzcd}
+     \end{center}
+     Esta sucesión, que denotamos $E$, se llama un \emph{complejo de operadores} si $L_i\circ L_{i-1}=0$ para $i=1,\dots,N-1$. Si $E$ es un complejo de operadores, definimos los \emph{grupos de cohomología} del complejo
+     \begin{equation*}
+       H^q(E)=\frac{\ker L_q}{\mathrm{im} L_{q-1}}.
+     \end{equation*}
+
+Fijo $x\in M$, asociada a $E$ tenemos una sucesión de símbolos, para cada $v\in T_xM$ con $v\neq 0$,
+     \begin{center}
+       \begin{tikzcd}
+	 0\arrow{r}	& E_{0,x}\arrow{rr}{\sigma(L_0)(x,v)} && E_{1,x} \arrow{rr}{\sigma(L_1)(x,v)}&& E_{2,x} \arrow{rr}{\sigma(L_2)(x,v)} && \dots \arrow{rr}{\sigma(L_{N-1})(x,v)} && E_{N,x} \arrow{r} & 0.
+       \end{tikzcd}
+     \end{center}
+     Si esta sucesión de símbolos es exacta, $E$ se llama un \emph{complejo elíptico}.
+   \end{defn}
+
+   Si $E$ es un complejo elíptico, asociado a cada operador $L_j$ tenemos un operador adjunto $L_j^*:\Gamma(M,E_{j+1}) \rightarrow \Gamma(M,E_j)$ y definimos los \emph{laplacianos} del complejo elíptico 
+   \begin{equation*}
+     \Delta_j=L_j^*L_j + L_{j-1}L^*_{j-1}: \Gamma(M,E_j) \rightarrow \Gamma(M,E_j).
+   \end{equation*}
+   Se prueba fácilmente que estos laplacianos $\Delta_j$ son elípticos y autoadjuntos. Por tanto, les podemos asociar los operadores $\pi$ y $G$ del teorema \ref{espectral}. Finalmente, se obtiene el siguiente teorema
+\begin{thm}[Hodge generalizado]
+  Sea $E$ un complejo elíptico. Entonces:
+  \begin{enumerate}
+    \item Hay una descomposición ortogonal
+      \begin{equation*}
+	\Gamma(M,E)= \ker \Delta \oplus LL^*G\Gamma(M,E) \oplus L^*LG\Gamma(M,E),
+      \end{equation*}
+    \item Se cumplen las siguientes relaciones:
+      \begin{enumerate}
+	\item $I=\pi+\Delta G = \pi+G\Delta$,
+	\item $\pi G=G\pi=\pi \Delta=\Delta \pi$,
+	\item $L\Delta=\Delta L$, $L^*\Delta=\Delta L^*$,
+	\item $LG=GL$, $L^*G=GL$.
+      \end{enumerate}
+    \item Tenemos que $\dim \ker \Delta < \infty$ y existe un isomorfismo canónico
+      \begin{equation*}
+	\ker \Delta_j \cong H^j(E).
+      \end{equation*}
+  \end{enumerate}
+\end{thm}
+  
 \end{document}
 
 
