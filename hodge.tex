@@ -38,6 +38,7 @@
 \newcommand{\pr}{\mathrm{pr}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\eps}{\varepsilon}
+\newcommand{\bomega}{\boldsymbol{\Omega}}
 
 \begin{document}
 \maketitle
@@ -600,8 +601,36 @@ ahora, por la desigualdad de Young generalizada puedo tomar un $\eps <1$ tal que
 	  Los grupos de cohomología de Dolbeaut de una variedad compleja compacta son de dimensión finita.
 	\end{corol}
 
-	\section{Consecuencias del teorema de Hodge}
-
+	\section{Dualidad de Kodaira-Serre}
+	En esta sección veremos uno de las consecuencias más importantes del teorema de Hodge.
+Es fácil comprobar que se verifica la igualdad $\dol^*=-*\dol *$, de modo que $*\Delta=\Delta*$. Esto implica que la estrella de Hodge induce un isomorfismo
+\begin{align*}
+  * :\mathcal{H}^{p,q}(M)&\longrightarrow \HH^{n-p,n-q}(M).
+  \end{align*}
+  En particular, como $*1=\dvol_M$, tenemos
+  \begin{equation*}
+    \HH^{n,n}(M) \cong \CC\cdot \dvol_M.
+  \end{equation*}
+  \begin{corol}[Dualidad de Kodaira-Serre]
+    Se tiene que $H^n(M,\bomega^n)\cong \CC$ y que
+    \begin{equation*}
+      H^q(M,\bomega^p) \cong H^{n-q}(M,\bomega^{n-p}).
+    \end{equation*}
+  \end{corol}
+  \begin{proof}
+    Recordemos que el teorema de Dolbeaut (que probamos usando cohomología de haces) afirmaba que $H^q(M,\bomega^p)\cong H^{p,q}(M)$. Ahora, por el teorema de Hodge, tenemos que $H^{p,q}(M)\cong \HH^{p,q}(M)$, de modo que $$H^q(M,\bomega^p)\cong \HH^{p,q}(M).$$
+    Componiendo este isomorfismo con la estrella de Hodge, obtenemos lo que queríamos probar:
+    \begin{center}
+      \begin{tikzcd}
+	H^n(M,\bomega^n) \cong H^{n,n}(M) \cong \HH^{n,n}(M) \arrow{r}{*} & \CC	
+      \end{tikzcd}
+    \end{center}
+    \begin{center}
+      \begin{tikzcd}
+	H^q(M,\bomega^p) \cong  H^{p,q}(M) \cong  \HH^{p,q}(M) \arrow{r}{*} & \HH^{n-p,n-q}(M) \cong H^{n-p,n-q}(M) \cong H^{n-q}(M,\bomega^{n-p}). 	
+      \end{tikzcd}
+    \end{center}
+  \end{proof}
 \end{document}
 
 
