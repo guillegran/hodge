@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  10 MAR 2019 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  11 MAR 2019 13:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -966,15 +966,15 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8
 ] [9] [10] [11]
-[12] [13] [14] [15] (./hodge.aux
+[12] [13] [14] [15] [16] (./hodge.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 16553 strings out of 494850
- 331859 string characters out of 6178023
- 379690 words of memory out of 5000000
- 19526 multiletter control sequences out of 15000+600000
+ 16709 strings out of 494850
+ 335809 string characters out of 6178023
+ 381178 words of memory out of 5000000
+ 19682 multiletter control sequences out of 15000+600000
  16611 words of font info for 63 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  56i,19n,84p,713b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -995,10 +995,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hodge.pdf (15 pages, 257891 bytes).
+Output written on hodge.pdf (16 pages, 266369 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -70,7 +70,7 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
  \begin{equation*}
    ds^2=\sum_i \varphi_i \otimes \bar{\varphi}_i.
  \end{equation*}
- Con esta referencia unitaria, podemos inducir una métrica en los fibrados $\Lambda^{p,q}(M)$: si 
+ Con esta referencia unitaria, podemos inducir una métrica en los fibrados $\Lambda^{p,q}(T^*M)$: si 
  \begin{align*}
    \alpha_x&= \sum_{|I|=p, |J|=q} \alpha_{IJ}(x) \varphi_{i_1} \wedge \cdots \wedge \varphi_{i_p} \wedge \bar{\varphi}_{j_1} \wedge \cdots \wedge \bar{\varphi}_{j_q}|_x, \\
    \beta_x&= \sum_{|I|=p, |J|=q} \beta_{IJ}(x) \varphi_{i_1} \wedge \cdots \wedge \varphi_{i_p} \wedge \bar{\varphi}_{j_1} \wedge \cdots \wedge \bar{\varphi}_{j_q}|_x ,
@@ -196,6 +196,7 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
    \begin{equation*}
      \esc{f,g}_{L^2(U)}=\int_U \bar{f} g.
    \end{equation*}
+   \qed
  \end{ejemplo}
  \begin{defn}
    Sean $X$ e $Y$ dos espacios de Hilbert. Un operador lineal $T:X\rightarrow Y$ se dice \emph{acotado} si existe una constante $C$ tal que
@@ -384,10 +385,10 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
 
   \section{La teoría global}
   \subsection{Espacios de Sobolev en variedades compactas}
-  Volvemos al contexto original: $M$ es una variedad compleja conexa y compacta de dimensión compleja $n$. Consideremos el fibrado $\Lambda^{p,q}(M)$ y $\left\{ U_\alpha, \varphi_\alpha \right\}$ una trivialización suya. Sea también $\left\{ \rho_\alpha \right\}$ una partición diferenciable de la unidad subordinada a $\left\{ U_\alpha \right\}$. Tenemos el diagrama
+  Volvemos al contexto original: $M$ es una variedad compleja conexa y compacta de dimensión compleja $n$. Consideremos el fibrado $\Lambda^{p,q}(T^*M)$ y $\left\{ U_\alpha, \varphi_\alpha \right\}$ una trivialización suya. Sea también $\left\{ \rho_\alpha \right\}$ una partición diferenciable de la unidad subordinada a $\left\{ U_\alpha \right\}$. Tenemos el diagrama
   \begin{center}
     \begin{tikzcd}
-      \Lambda^{p,q}(U_\alpha)      \arrow{rr}{\varphi_\alpha}\arrow{dd}[anchor=east]{} && \tilde{U}_\alpha \times \CC^r\arrow{dd}[anchor=west]{\pr_1} \\ 
+      \Lambda^{p,q}(T^*U_\alpha)      \arrow{rr}{\varphi_\alpha}\arrow{dd}[anchor=east]{} && \tilde{U}_\alpha \times \CC^r\arrow{dd}[anchor=west]{\pr_1} \\ 
        && \\
        U_\alpha\arrow{rr}[anchor=south]{\tilde{\varphi}_\alpha} && \tilde{U}_\alpha,
      \end{tikzcd}
@@ -689,13 +690,13 @@ Tenemos el diagrama
 	     \Gamma(M,E)|_U \arrow{r}{L} \arrow[hook]{u}{} & \Gamma(M,E)|_U \arrow[hook]{u}{} 	     .
 	   \end{tikzcd}
 	 \end{center}	
-	 Fijo $x\in M$, llamamos el \emph{símbolo de $L$} en un punto $v\in T_xM$ con $v\neq0$ a la aplicación lineal
+	 Fijo $x\in M$, llamamos el \emph{símbolo de $L$} en un punto $v\in T^*_xM$ con $v\neq0$ a la aplicación lineal
 	 \begin{align*}
 	   \sigma(L)(x,v) :E_x&\longrightarrow F_x\\ 
 	   (\xi_1,\dots,\xi_r) &\longmapsto \left( \sum_{j=1,|\alpha|=k}^p a_{\alpha}^{ij}v^\alpha\xi_j\right)_{i=1,\dots,s},
 	   \end{align*}
 	   donde $v^\alpha=v_{i_1}^{\alpha_1}\dots v_{i_n}^{\alpha_n}$.
-	   Decimos que el operador $L$ es \emph{elíptico} si para cada $(x,v)\in T_xM$, $\sigma(L)(x,v)$ es un isomorfismo lineal. 
+	   Decimos que el operador $L$ es \emph{elíptico} si para cada $(x,v)\in T^*M$, $\sigma(L)(x,v)$ es un isomorfismo lineal. 
    \end{defn}
 
    El teorema clave para operadores elípticos es el siguiente:
@@ -724,7 +725,7 @@ Tenemos el diagrama
        H^q(E)=\frac{\ker L_q}{\mathrm{im} L_{q-1}}.
      \end{equation*}
 
-Fijo $x\in M$, asociada a $E$ tenemos una sucesión de símbolos, para cada $v\in T_xM$ con $v\neq 0$,
+Fijo $x\in M$, asociada a $E$ tenemos una sucesión de símbolos, para cada $v\in T^*_xM$ con $v\neq 0$,
      \begin{center}
        \begin{tikzcd}
 	 0\arrow{r}	& E_{0,x}\arrow{rr}{\sigma(L_0)(x,v)} && E_{1,x} \arrow{rr}{\sigma(L_1)(x,v)}&& E_{2,x} \arrow{rr}{\sigma(L_2)(x,v)} && \dots \arrow{rr}{\sigma(L_{N-1})(x,v)} && E_{N,x} \arrow{r} & 0.
@@ -758,7 +759,102 @@ Fijo $x\in M$, asociada a $E$ tenemos una sucesión de símbolos, para cada $v\i
       \end{equation*}
   \end{enumerate}
 \end{thm}
-  
+
+\begin{ejemplo}
+  Consideremos el complejo de de Rham (con coeficientes complejos, es decir, $\Omega^k(M)=\Omega^k(M,\CC)$)
+  \begin{center}
+    \begin{tikzcd}
+      \Omega^0(M) \arrow{r}{d} & \Omega^1(M) \arrow{r}{d} & \cdots \arrow{r}{d} & \Omega^n(M).
+    \end{tikzcd}
+  \end{center}
+  Nótese que $\Omega^k(M)=\Gamma(M,\Lambda^k(T^*M\otimes \CC))$ y que los operadores $d$ son operadores diferenciales. Tenemos entonces, para cada $(x,v)\in T^*M$, una sucesión de símbolos
+  \begin{center}
+    \begin{tikzcd}
+      \Lambda^0(T_x^*M\otimes \CC) \arrow{rr}{\sigma(d)(x,v)} && \Lambda^1(T_x^*M\otimes \CC) \arrow{rr}{\sigma(d)(x,v)} && \cdots \arrow{rr}{\sigma(d)(x,v)} && \Lambda^n(T_x^*M\otimes \CC).
+    \end{tikzcd}
+  \end{center}
+  Para cada $e\in \Lambda^k(T_x^*M\otimes \CC)$, es fácil probar que
+  \begin{equation*}
+    \sigma(d)(x,v)e=iv\wedge e.
+  \end{equation*}
+  Además, la sucesión de símbolos es exacta. Tenemos entonces que el complejo de de Rham es un complejo elíptico. En este caso los laplacianos vienen dados por
+  \begin{equation*}
+    \Delta=d^*d+dd^*:\Omega^k(M) \longrightarrow \Omega^k(M).
+  \end{equation*}
+  El teorema de Hodge generalizado nos da un isomorfismo canónico
+  \begin{equation*}
+    H^k_{\mathrm{dR}}(M) \cong \mathcal{H}^k(M),
+  \end{equation*}
+  con $\mathcal{H}^k(M)=\ker(\Delta:\Omega^k(M) \rightarrow \Omega^k(M))$.
+  Además, la estrella de Hodge sigue dando un isomorfismo
+  \begin{equation*}
+    *:\HH^k(M) \longrightarrow \HH^{n-k}(M),
+  \end{equation*}
+  de modo que tenemos un isomorfismo $H_{\mathrm{dR}}^n(M) \cong \CC$ y 
+  \begin{equation*}
+    H_{\mathrm{dR}}^k(M) \cong H_{\mathrm{dR}}^{n-k}(M) .
+  \end{equation*}
+  Esto es lo que se conoce como la \emph{dualidad de Poincaré}. \qed
+\end{ejemplo}
+\begin{ejemplo}
+  Sea $E\rightarrow M$ un fibrado vectorial holomorfo y consideremos las formas diferenciables de tipo $(p,q)$ con coeficientes en $E$
+  \begin{equation*}
+    \Omega^{p,q}(M,E) = \Gamma(M,\Lambda^{p,q}(T^*M\otimes \CC)\otimes E).
+  \end{equation*}
+  Esto da un complejo
+  \begin{center}
+    \begin{tikzcd}
+      \cdots \arrow{r}{\dol_E} & \Omega^{p,q}(M,E) \arrow{r}{\dol_E} & \Omega^{p,q+1}(M,E) \arrow{r}{\dol_E} & \cdots,
+    \end{tikzcd}
+  \end{center}
+  donde los operadores $\dol_E$ son operadores diferenciales. Para cada $(x,v)\in T^*M$ tenemos una sucesión de símbolos
+  \begin{center}
+    \begin{tikzcd}
+      \cdots\arrow{rr}{\sigma(\dol_E)(x,v)} &&     \Lambda^{p,q}(T_x^*M\otimes \CC)\otimes E_x \arrow{rr}{\sigma(\dol_E)(x,v)} && \Lambda^{p,q+1}(T_x^*M\otimes \CC)\otimes E_x \arrow{rr}{\sigma(\dol_E)(x,v)} && \cdots .
+    \end{tikzcd}
+  \end{center}
+  Para cada $f\otimes e\in \Lambda^{p,q}(T_x^*M)\otimes E_x$, si escribimos $v=v^{1,0}+v^{0,1}$, es fácil probar que
+  \begin{equation*}
+    \sigma(\dol_E)(x,v) f \otimes e = (iv^{0,1}\wedge f)\otimes e.
+  \end{equation*}
+  Además, de nuevo la sucesión de símbolos es exacta. Tenemos entonces que este complejo es elíptico y sus laplacianos vienen dados por
+  \begin{equation*}
+    \Delta = \dol_E^*\dol_E + \dol_E \dol_E^*:\Omega^{p,q}(M,E) \longrightarrow \Omega^{p,q}(M,E).
+  \end{equation*}
+  Aquí, el teorema de Hodge generalizado nos da un isomorfismo canónico
+  \begin{equation*}
+    H^{p,q}(M,E) \cong \HH^{p,q}(M,E), 
+  \end{equation*}
+  con $\HH^{p,q}(M,E)=\ker(\Delta:\Omega^{p,q}(M,E)\rightarrow \Omega^{p,q}(M,E)$. También en este caso la estrella de Hodge sigue dando un isomorfismo
+  \begin{equation*}
+    *:\HH^{p,q}(M,E) \longrightarrow \HH^{n-p,n-q}(M,E),
+  \end{equation*}
+  y además la cohomología de haces nos da un isomorfismo
+  \begin{equation*}
+    H^{p,q}(M,E) \cong H^q(M,\bomega^p(E)).
+  \end{equation*}
+  Juntando estos isomorfismos tenemos 
+  \begin{equation*}
+    H^q(M,\bomega^p(E))\cong H^{n-q}(M,\bomega^{n-p}(E)).
+  \end{equation*}
+  En particular, para $p=0$, tenemos
+  \begin{equation*}
+    H^q(M,\bomega^0(E))\cong H^q(M,\bomega^n(E)).
+  \end{equation*}
+  Si denotamos por $\mathcal{O}(E)$ las secciones holomorfas del fibrado $E$ y llamamos el \emph{fibrado canónico} a $K_M=\Lambda^n((\mathbf{T}M)^*)$ (con $\mathbf{T}M=T^{1,0}M$ el fibrado tangente holomorfo) tenemos  el siguiente isomorfismo
+  \begin{equation*}
+    H^k(M,\mathcal{O}(E)) \cong H^k(M,\mathcal{O}(E\otimes K_M)).
+  \end{equation*}
+  Este isomorfismo se conoce como la \emph{dualidad de Serre}. 
+Si denotamos el \emph{haz canónico} $\omega_M=\mathcal{O}(K_M)$ y recordamos la correspondencia entre los fibrados holomorfos y los haces de $\mathcal{O}_M$~-módulos localmente libres ($E\mapsto \mathcal{O}(E)$), podemos formular la dualidad de Serre en una forma más «algebraica»:
+\begin{corol}[Dualidad de Serre]
+  Sea $\mathcal{E}$ un haz de $\mathcal{O}_M$-módulos localmente libre. Entonces se tiene el siguiente isomorfismo
+  \begin{equation*}
+    H^k(M,\mathcal{E})\cong H^k(M,\mathcal{E}\otimes \omega_M).
+  \end{equation*}
+\end{corol}
+\qed
+\end{ejemplo}
 \end{document}
 
 
