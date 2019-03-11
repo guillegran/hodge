@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: hodge.aux
+The style file: plain.bst
+Database file #1: biblio.bib
+Warning--empty year in vicente
+Warning--empty journal in reiterschuster
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            534 strings with 4736 characters,
+and the built_in function-call counts, 1710 in all, are:
+= -- 161
+> -- 72
+< -- 0
++ -- 29
+- -- 22
+* -- 81
+:= -- 312
+add.period$ -- 26
+call.type$ -- 7
+change.case$ -- 26
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 82
+empty$ -- 150
+format.name$ -- 22
+if$ -- 360
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 13
+newline$ -- 39
+num.names$ -- 14
+pop$ -- 51
+preamble$ -- 1
+purify$ -- 25
+quote$ -- 0
+skip$ -- 44
+stack$ -- 0
+substring$ -- 35
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 2
+while$ -- 14
+width$ -- 8
+write$ -- 76
+(There were 2 warnings)

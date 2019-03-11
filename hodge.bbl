@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{evans}
+L.C. Evans.
+\newblock {\em Partial Differential Equations}.
+\newblock Graduate Studies in Mathematics. American Mathematical Society, 2010.
+
+\bibitem{vicente}
+A~González, V~Muñoz, and J.A. Rojo.
+\newblock {\em Geometry and Topology of Surfaces}.
+\newblock Unpublished lecture notes.
+
+\bibitem{griffiths}
+P.~Griffiths and J.~Harris.
+\newblock {\em Principles of Algebraic Geometry}.
+\newblock Wiley Classics Library. Wiley, 2014.
+
+\bibitem{jost}
+J.~Jost.
+\newblock {\em Riemannian Geometry and Geometric Analysis}.
+\newblock Universitext. Springer Berlin Heidelberg, 2008.
+
+\bibitem{limaye}
+B.V. Limaye.
+\newblock {\em Functional Analysis}.
+\newblock New Age International (P) Limited, 1996.
+
+\bibitem{reiterschuster}
+Reiter M. and Arthur S.
+\newblock Fourier {T}ransform and {S}obolev {S}paces.
+\newblock 2008.
+\newblock
+  \url{https://www.mat.univie.ac.at/stein/lehre/SoSem08/sobolev_fourier.pdf}.
+
+\bibitem{wells}
+R.O. Wells.
+\newblock {\em Differential Analysis on Complex Manifolds}.
+\newblock Graduate Texts in Mathematics. Springer New York, 2013.
+
+\end{thebibliography}

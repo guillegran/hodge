@@ -13,6 +13,8 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows, babel}
+\usepackage{url}
+\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue,urlcolor=blue]{hyperref}
 
 \author{\textit{Guillermo Gallego Sánchez}}
 \title{\textsc{Teoría de Hodge}}
@@ -261,7 +263,7 @@ El propósito fundamental de la \emph{teoría de Hodge} es encontrar unos repres
    \end{enumerate}
  \end{thm}
 
- Los resultados de esta sección pueden leerse en [Evans, apéndice] o en cualquier libro típico de análisis funcional, por ejemplo [Kalton] o [Limaye].
+ Los resultados de esta sección pueden leerse en \cite[Apéndice D]{evans} o en cualquier libro típico de análisis funcional, por ejemplo \cite{limaye}.
 
  \subsection{Espacios de Sobolev}
 \begin{ejemplo}\label{ejemplo1}
@@ -381,7 +383,7 @@ $i:	H^k(U) \hookrightarrow L^2(U)$,
     con $i$ operador compacto.
   \end{thm}
 
-  Los resultados de esta sección pueden verse expuestos con detalle en [Evans]. Sin embargo, recomiendo más la lectura de [Wells, capítulo 4] o de [Reiter-Schuster], que usan las propiedades de la transformada de Fourier para dar pruebas sencillas de estos resultados.
+  Los resultados de esta sección pueden verse expuestos con detalle en \cite{evans}. Sin embargo, recomiendo más la lectura de \cite[Capítulo 4]{wells} o de \cite{reiterschuster}, que usan las propiedades de la transformada de Fourier para dar pruebas sencillas de estos resultados.
 
   \section{La teoría global}
   \subsection{Espacios de Sobolev en variedades compactas}
@@ -855,6 +857,10 @@ Si denotamos el \emph{haz canónico} $\omega_M=\mathcal{O}(K_M)$ y recordamos la
 \end{corol}
 \qed
 \end{ejemplo}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{biblio}
 \end{document}
 
 
